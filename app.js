@@ -161,7 +161,7 @@ function renderHome(){
  // Category and subcategory counts reflect the imported collection, not decorative numbers.
  $$('.cat[data-tab]').forEach(a=>{const p=$('small',a);if(a.dataset.tab==='lenceria')p.textContent=products.filter(p=>p.category==='lenceria').length+' modelos'});
  const adultSmall=$('.cat.adult small');if(adultSmall)adultSmall.textContent=products.filter(p=>p.category==='sex-shop').length+' productos · discreción total';
- const chips=$$('.chips .chip');const subIds=['vibradores','succionadores','estimuladores','cosmeticos','cosmeticos','accesorios-y-juegos','masculinos','lenceria','accesorios-y-juegos','despedida-de-soltera'];chips.forEach((a,i)=>{a.href=subIds[i]==='lenceria'?'/colecciones/lenceria':'/sex-shop?tipo='+subIds[i];$('small',a).textContent=subIds[i]==='lenceria'?'Explorar':products.filter(p=>p.collections.includes(subIds[i])).length+' opciones'});
+ const chips=$$('.chips .chip');const subIds=['vibradores','succionadores','estimuladores','cosmeticos','cosmeticos','accesorios-y-juegos','masculinos','lenceria','accesorios-y-juegos','despedida-de-soltera'];chips.forEach((a,i)=>{a.href=subIds[i]==='lenceria'?'/colecciones/lenceria':'/sex-shop?estilo='+subIds[i]+'#department-products';$('small',a).textContent=subIds[i]==='lenceria'?'Explorar':products.filter(p=>p.collections.includes(subIds[i])).length+' opciones'});
  const guide=$$('.guides .guide')[1];if(guide)$('a',guide).href='/guia-intima';
  $('#open-now').textContent='Atención personal · coordiná tu visita';
  const hero=products.find(p=>p.handle==='bata-monica');if(hero){$('.fc-2>div:last-child').innerHTML=`<strong>Bata Mónica</strong>${fmt(hero.price)}`;$('.hero-img').innerHTML=`<a href="${productUrl(hero)}"><img src="/assets/monica.webp" alt="Bata Mónica en encaje rojo" fetchpriority="high"></a>`}
@@ -174,13 +174,89 @@ function common(){
  $('#burger').setAttribute('aria-expanded','false');$('#burger').setAttribute('aria-controls','mmenu');
  $('#burger').onclick=()=>{$('#mmenu').classList.add('show');$('#mmenu').setAttribute('role','dialog');$('#mmenu').setAttribute('aria-modal','true');$('#mmenu').setAttribute('aria-label','Navegación');$('#burger').setAttribute('aria-expanded','true');document.body.style.overflow='hidden';$('#mclose').focus()};
  const closeMenu=()=>{$('#mmenu').classList.remove('show');$('#mmenu').removeAttribute('aria-modal');$('#mmenu').removeAttribute('role');$('#burger').setAttribute('aria-expanded','false');document.body.style.overflow='';$('#burger').focus()};
- $('#mclose').onclick=closeMenu;$('#mmenu nav').insertAdjacentHTML('beforeend','<a class="mobile-nav-extra" href="/catalogo">Todo el catálogo</a><a class="mobile-nav-extra" href="/favoritos">Mis favoritos</a><a class="mobile-nav-extra" href="/envios">Envíos y cambios</a>');
+ $('#mclose').onclick=closeMenu;$('#mmenu nav').insertAdjacentHTML('afterbegin','<a href="/">Inicio</a>');$('#mmenu nav').insertAdjacentHTML('beforeend','<a class="mobile-nav-extra" href="/catalogo">Todo el catálogo</a><a class="mobile-nav-extra" href="/favoritos">Mis favoritos</a><a class="mobile-nav-extra" href="/envios">Envíos y cambios</a>');
  const social=$$('.socials a');if(social[0])social[0].innerHTML=HEART;if(social[1])social[1].innerHTML=$('.nav-icons a[aria-label="Nuestro local"] svg').outerHTML;
- const nav=$('.nav-links');nav.insertAdjacentHTML('afterbegin','<a href="/catalogo">Catálogo</a>');
+ const nav=$('.nav-links');nav.insertAdjacentHTML('afterbegin','<a href="/">Inicio</a>');
  $$('.nav-links a, #mmenu nav a').forEach(a=>{if(a.getAttribute('href')===location.pathname)a.setAttribute('aria-current','page')});
  document.addEventListener('click',e=>{const close=e.target.closest('[data-close-dialog]');if(close){closeDialog(close.closest('dialog'));return}const fav=e.target.closest('[data-favorite]');if(fav){toggleFavorite(fav.dataset.favorite);return}const qty=e.target.closest('[data-cart-change]');if(qty){const [id,d]=qty.dataset.cartChange.split(':');const item=cart.find(x=>x.id===id);if(item){item.q+=+d;if(item.q<1)cart=cart.filter(x=>x.id!==id);saveCart()}return}const remove=e.target.closest('[data-cart-remove]');if(remove){cart=cart.filter(x=>x.id!==remove.dataset.cartRemove);saveCart()}});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'){if($('#mmenu.show'))closeMenu();if($('#filters.is-open'))closeFilters()}if(e.key==='Tab'){const trap=$('#mmenu.show')||$('#filters.is-open')||$('#gate:not(.hide)');if(!trap)return;const focusables=$$('a[href],button:not(:disabled),input:not(:disabled),select,textarea,summary',trap).filter(x=>x.offsetParent!==null),first=focusables[0],last=focusables.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus()}}});
 }
+// Each department is an editorial destination. The complete catalog remains a separate search tool.
+const DEPARTMENTS = {
+ lenceria:{label:'Lencería',className:'lingerie',title:'Sentite vos.<br><em>Sentite irresistible.</em>',intro:'Encaje para todos los días o ese conjunto para una ocasión especial. Elegí lo que te hace sentir bien.',image:'conjunto-malena',cta:'Encontrar mi estilo',note:'Tu cuerpo, tu manera de llevarlo.',guide:'/guia-de-talles',guideLabel:'Encontrá tu talle',section:'¿Qué te gusta <em>ponerte?</em>',selection:'Tu próxima <em>favorita.</em>',groups:[['conjuntos','Conjuntos','Encajes que se llevan juntos.','conjunto-malena'],['bodies','Bodies','Una sola prenda, toda la actitud.','body-katherine-con-ligas'],['babydolls','Baby dolls','Ligereza, transparencias y detalles.','baby-doll-1'],['sutienes','Sutienes','El sostén que va con vos.','sutien-fiona-copa-d'],['batas','Batas','Un momento para vos.','bata-monica'],['accesorios','Accesorios y más','Los detalles completan tu look.','medias-de-red-y-voladitos-7-8']]},
+ pijamas:{label:'Pijamas',className:'sleep',title:'Bajá el ritmo.<br><em>Ponete cómoda.</em>',intro:'Llegar a casa, cambiarte y sentir que el día ya es tuyo. Encontrá esa suavidad que querés volver a usar.',image:'pijama-simil-seda',cta:'Elegir mi pijama',note:'Para descansar. Para quedarte un ratito más.',guide:'/guia-de-talles',guideLabel:'Te ayudamos con el talle',section:'Cada noche tiene <em>su textura.</em>',selection:'Elegidos para <em>tu descanso.</em>',groups:[['seda','Símil seda','Suave, liviana, con un toque especial.','pijama-simil-seda-y-encaje'],['plush','Plush','Ese abrigo que se siente como un abrazo.','pijama-plush-calentito'],['algodon','Algodón','Comodidad para tus días en casa.','pijamas-algodon-koala'],['camisones','Camisones','Frescura y libertad de movimiento.','camison-clara'],['termicos','Térmicos','Una capa más para los días frescos.','polera-termica'],['accesorios','Pantuflas','La comodidad sigue hasta los pies.','pantuflas-tifanny']]},
+ bikinis:{label:'Bikinis',className:'summer',title:'Tu verano.<br><em>A tu manera.</em>',intro:'Enterizas, dos piezas y combinaciones que hacés tuyas. Elegí cómo querés vivir tus días al sol.',image:'bikini-evelyn',cta:'Encontrar mi bikini',note:'De Maldonado a tu próxima escapada.',guide:'/guia-de-talles',guideLabel:'Elegí el calce para vos',section:'Armá tu <em>propia combinación.</em>',selection:'La playa <em>te espera.</em>',groups:[['dos-piezas','Dos piezas','Conjuntos listos para salir al sol.','bikini-evelyn'],['enterizas','Enterizas','Tu silueta, un solo gesto.','malla-enteriza-con-volados-y-mona'],['arriba','Partes de arriba','Empezá por el top que te encanta.','parte-de-arriba-marca-rae-lua'],['abajo','Partes de abajo','Elegí tu cobertura y tu calce.','parte-de-abajo-vedetina-rae']]},
+ 'sex-shop':{label:'Sex Shop +18',className:'intimacy',title:'La curiosidad<br>también es <em>tuya.</em>',intro:'Un espacio para descubrir, elegir y preguntar con confianza. A solas o en pareja, siempre a tu ritmo.',image:'vela-besable-saborizada',cta:'Explorar por categoría',note:'Solo mayores de 18 años · Empaque discreto',guide:'/guia-intima',guideLabel:'¿Es tu primera vez? Empezá acá',section:'¿Qué querés <em>descubrir?</em>',selection:'Explorá <em>a tu ritmo.</em>',groups:[]}
+};
+function departmentPool(id){return products.filter(p=>p.category===id)}
+function departmentImage(handle){return products.find(p=>p.handle===handle)?.images[0]||'/assets/logo.png'}
+function departmentMatch(p,department,style){
+ if(!style||style==='todo')return true;
+ const n=normalize(p.name),h=normalize(p.handle);
+ if(department==='sex-shop')return p.collections.includes(style);
+ if(department==='lenceria'){
+  if(style==='conjuntos')return /conjunto|^set |corset/.test(n);
+  if(style==='bodies')return /body/.test(n)&&!n.includes('babydoll');
+  if(style==='babydolls')return /baby doll|babydoll/.test(n);
+  if(style==='sutienes')return /sutien/.test(n);
+  if(style==='batas')return /bata/.test(n);
+  if(style==='accesorios')return !/conjunto|^set |corset|body|baby doll|sutien|bata/.test(n);
+ }
+ if(department==='pijamas'){
+  if(style==='seda')return /seda/.test(n);
+  if(style==='plush')return /plush/.test(n);
+  if(style==='algodon')return /algodon/.test(n);
+  if(style==='camisones')return /camison/.test(n);
+  if(style==='termicos')return /termic/.test(n);
+  if(style==='accesorios')return /pantufla/.test(n);
+ }
+ if(department==='bikinis'){
+  if(style==='enterizas')return /enteriza/.test(n);
+  if(style==='arriba')return /arriba|top|triangulo/.test(n+' '+h);
+  if(style==='abajo')return /abajo|less|vedetina|short/.test(n)&&!/bikini|enteriza/.test(n);
+  if(style==='dos-piezas')return /bikini/.test(n)&&!/arriba|abajo|short/.test(n);
+ }
+ return false;
+}
+function departmentGroups(id){if(id!=='sex-shop')return DEPARTMENTS[id].groups;return subcategories.map(c=>[c.id,c.name,'',departmentPool(id).find(p=>p.collections.includes(c.id)&&p.available)?.handle||departmentPool(id).find(p=>p.collections.includes(c.id))?.handle])}
+function departmentLink(id,style='todo'){return categoryUrl(id)+(style==='todo'?'':'?estilo='+encodeURIComponent(style))+'#department-products'}
+function departmentEditorial(id){
+ if(id==='lenceria')return `<section class="department-story lingerie-story"><img src="${departmentImage('bata-monica')}" alt="Bata Mónica de Pasión" loading="lazy" width="500" height="620"><div><h2>El mejor talle es el que<br>te hace sentir <em>cómoda.</em></h2><p>No todos los modelos calzan igual. Tomá tus medidas y contanos cuál te gusta: te ayudamos a elegir antes de comprar.</p><a class="text-button" href="/guia-de-talles">Cómo encontrar mi talle →</a></div></section>`;
+ if(id==='pijamas')return `<section class="sleep-note"><div><h2>Tu casa.<br><em>Tu momento.</em></h2><p>Un café sin apuro, una película o una mañana libre. No hace falta una ocasión para estar cómoda.</p></div><a class="sleep-pick" href="${productUrl(products.find(p=>p.handle==='pijama-plush-calentito'))}"><img src="${departmentImage('pijama-plush-calentito')}" alt="Pijama Plush Calentito" loading="lazy" width="480" height="480"><span>Para los días frescos <strong>Pijama Plush Calentito ↗</strong></span></a></section>`;
+ if(id==='bikinis')return `<section class="summer-pair"><div><h2>No tenés que elegir<br><em>como todo el mundo.</em></h2><p>Combiná la parte de arriba y de abajo a tu gusto. Consultanos por talles y opciones para armar tu conjunto.</p><a class="btn btn-ghost" href="${departmentLink(id,'arriba')}">Empezar por un top →</a></div><a href="${departmentLink(id,'abajo')}" aria-label="Explorar partes de abajo"><img src="${departmentImage('parte-de-abajo-vedetina-rae')}" alt="Parte de abajo de bikini Rae" loading="lazy" width="500" height="520"></a></section>`;
+ return `<section class="intimacy-guidance"><div><span class="eyebrow">Podés preguntar</span><h2>No hace falta saber<br>por dónde <em>empezar.</em></h2><p>Leé nuestra guía o contanos qué te da curiosidad. Te ayudamos a comparar opciones con respeto y sin juicios.</p><a class="btn btn-ghost" href="/guia-intima">Mi primera elección →</a></div><div class="discretion-list"><div><strong>Tu compra queda entre vos y Pasión.</strong><p>Empaque neutro, sin marcas ni referencias al contenido.</p></div><div><strong>Atención de persona a persona.</strong><p>Asesoramiento por WhatsApp para elegir con tranquilidad.</p></div><div><strong>Información antes de comprar.</strong><p>Conocé materiales, medidas y cuidados en cada ficha.</p></div></div></section>`;
+}
+function renderDepartment(id){
+ const config=DEPARTMENTS[id];if(!config){renderNotFound();return}
+ document.title=config.label+' | Pasión Lencería';
+ const groups=departmentGroups(id),pool=departmentPool(id),mainImage=departmentImage(config.image);
+ const heroPhoto=`<img src="${mainImage}" alt="${esc(products.find(p=>p.handle===config.image)?.name||config.label)}" fetchpriority="high" width="720" height="850">`;
+ let visual=heroPhoto;
+ if(id==='bikinis')visual=`${heroPhoto}<a class="summer-detail" href="${departmentLink(id,'enterizas')}" aria-label="Descubrir enterizas"><img src="${departmentImage('malla-enteriza-con-volados-y-mona')}" alt="Enteriza con volados" width="240" height="300"></a>`;
+ if(id==='sex-shop')visual=`<div class="intimacy-photo">${heroPhoto}</div><a class="intimacy-second" href="${productUrl(products.find(p=>p.handle==='set-de-3-dados'))}"><img src="${departmentImage('set-de-3-dados')}" alt="Set de tres dados para parejas" width="300" height="300"><span>Ideas para compartir ↗</span></a>`;
+ const visibleGroups=id==='lenceria'?groups.slice(0,4):id==='pijamas'?groups.slice(0,4):groups;
+ $('#main').innerHTML=`<div class="wrap department department-${config.className}" data-department="${id}"><nav class="breadcrumbs department-breadcrumbs" aria-label="Ruta de navegación"><a href="/">Inicio</a><span>/</span><span>${esc(config.label)}</span></nav><section class="department-hero"><div class="department-copy"><span class="eyebrow">${esc(config.label)}</span><h1>${config.title}</h1><p>${config.intro}</p><div class="department-cta"><a class="btn btn-primary" href="#${id==='sex-shop'?'department-families':'department-products'}">${config.cta} ↓</a><a class="department-guide" href="${config.guide}">${config.guideLabel} ↗</a></div><span class="department-note">${config.note}</span></div><div class="department-visual">${visual}</div></section>
+ <section class="department-families" id="department-families"><div class="department-section-heading"><h2>${config.section}</h2><p>${id==='sex-shop'?'Elegí una categoría para descubrir sus opciones.':id==='pijamas'?'Buscá tu textura, encontrá tu momento.':'Un recorrido por los estilos de la colección.'}</p></div><div class="family-grid">${visibleGroups.map(([style,label,description,handle])=>{const count=pool.filter(p=>departmentMatch(p,id,style)).length;return `<a class="family-card" href="${departmentLink(id,style)}"><div class="family-photo"><img src="${departmentImage(handle)}" alt="${esc(label)}" loading="lazy" width="400" height="460"></div><div class="family-caption"><h3>${esc(label)} <span aria-hidden="true">↗</span></h3><p>${description?esc(description)+' · ':''}${count} ${count===1?'opción':'opciones'}</p></div></a>`}).join('')}</div></section>
+ ${departmentEditorial(id)}
+ <section class="department-products" id="department-products" aria-label="Selección de ${esc(config.label)}"><div class="department-section-heading"><h2>${config.selection}</h2><p>Elegí un modelo para ver sus fotos, talles y detalles.</p></div><nav class="department-style-tabs" aria-label="Estilos de ${esc(config.label)}"><a href="${departmentLink(id)}" data-department-style="todo">Todo ${esc(config.label.toLowerCase())}</a>${groups.map(([style,label])=>`<a href="${departmentLink(id,style)}" data-department-style="${style}">${esc(label)}</a>`).join('')}</nav><form class="department-tools" id="department-tools"><label class="department-search">${SEARCH}<input name="q" type="search" placeholder="Buscar en ${esc(config.label.toLowerCase())}" aria-label="Buscar en ${esc(config.label)}" value="${esc(urlParams.get('q')||'')}"><button type="submit">Buscar</button></label><label class="department-sort"><span>Ordenar</span><select name="order" class="sort-select"><option value="recommended">Recomendados</option><option value="price-asc">Menor precio</option><option value="price-desc">Mayor precio</option><option value="name">Nombre: A a Z</option></select></label><label class="check-label"><input type="checkbox" name="stock" ${urlParams.get('stock')==='1'?'checked':''}><span>Solo disponibles</span></label></form><p id="department-count" class="result-count" role="status"></p><div id="department-grid" class="catalog-grid department-grid"></div><div class="department-more"><button id="department-more" class="btn btn-ghost">Ver más productos</button></div></section>
+ <nav class="continue-exploring" aria-label="Seguí descubriendo Pasión"><div><span class="eyebrow">Seguí por Pasión</span><h2>¿Qué más te <em>gusta?</em></h2></div>${categories.filter(c=>c.id!==id).map(c=>`<a href="${categoryUrl(c.id)}">${esc(c.name)} <span aria-hidden="true">→</span></a>`).join('')}<a href="/regalos">Ideas para regalar <span aria-hidden="true">→</span></a></nav></div>`;
+ let shown=12;
+ const params=()=>new URLSearchParams(location.search);
+ $('#department-tools select').value=params().get('orden')||'recommended';
+ const update=()=>{
+  const ps=params(),style=ps.get('estilo')||ps.get('tipo')||'todo';let hits=pool.filter(p=>departmentMatch(p,id,style));if(ps.get('q'))hits=hits.filter(p=>matchesSearch(p,ps.get('q')));if(ps.get('stock')==='1')hits=hits.filter(p=>p.available);
+  const order=ps.get('orden');if(order==='price-asc')hits.sort((a,b)=>a.price-b.price);else if(order==='price-desc')hits.sort((a,b)=>b.price-a.price);else if(order==='name')hits.sort((a,b)=>a.name.localeCompare(b.name,'es'));else hits.sort((a,b)=>Number(b.available)-Number(a.available)||Number(b.collections.includes('destacados'))-Number(a.collections.includes('destacados')));
+  $$('[data-department-style]').forEach(a=>{const active=a.dataset.departmentStyle===style;a.classList.toggle('is-active',active);if(active)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')});
+  $('#department-count').textContent=`${hits.length} ${hits.length===1?'producto':'productos'} · Mostrando ${Math.min(shown,hits.length)}${style!=='todo'?' · '+(groups.find(g=>g[0]===style)?.[1]||'Selección'):''}${ps.get('q')?' · “'+ps.get('q')+'”':''}`;
+  $('#department-grid').innerHTML=hits.length?hits.slice(0,shown).map(productCard).join(''):`<div class="empty-state"><h3>No encontramos esa combinación.</h3><p>Probá otra palabra o volvé a la selección de ${esc(config.label.toLowerCase())}.</p><a class="btn btn-primary" href="${departmentLink(id)}">Ver la selección</a></div>`;
+  $('#department-more').hidden=hits.length<=shown;$('#department-more').textContent=`Ver ${Math.min(12,Math.max(0,hits.length-shown))} más de ${esc(config.label.toLowerCase())}`;
+ };
+ const apply=()=>{const form=$('#department-tools'),ps=params();for(const [key,value]of[['q',form.elements.q.value.trim()],['orden',form.elements.order.value],['stock',form.elements.stock.checked?'1':'']]){if(value)ps.set(key,value);else ps.delete(key)}ps.delete('pagina');updateUrl(ps);shown=12;update()};
+ $('#department-tools').onsubmit=e=>{e.preventDefault();apply()};$('#department-tools select').onchange=apply;$('#department-tools [name=stock]').onchange=apply;$('#department-more').onclick=()=>{shown+=12;update()};
+ $$('[data-department-style]').forEach(a=>a.onclick=e=>{e.preventDefault();const ps=params();ps.delete('tipo');if(a.dataset.departmentStyle==='todo')ps.delete('estilo');else ps.set('estilo',a.dataset.departmentStyle);updateUrl(ps);shown=12;update()});
+ update();
+}
+
 common();
 async function boot(){
  try{const response=await fetch('/data/catalog.json');if(!response.ok)throw Error('No se pudo cargar el catálogo');const data=await response.json();products=data.products;categories=data.categories;subcategories=data.subcategories;
@@ -188,10 +264,13 @@ async function boot(){
  dialogs();renderCart();searchPreview();
  let route=decodeURIComponent(location.pathname).replace(/\/$/,'')||'/';if(route.startsWith('/pages/')){const slug=route.split('/').at(-1),mapped={contact:'contacto','sex-shop':'sex-shop'};route='/'+(mapped[slug]||slug)}
  if(route==='/'||route==='/index.html'){renderHome()}
- else if(route==='/catalogo'||route.startsWith('/colecciones/')||route.startsWith('/collections/')||route==='/sex-shop')renderCatalog();
+ else if(route==='/catalogo'||route==='/collections/all')renderCatalog();
+ else if(route==='/sex-shop')renderDepartment('sex-shop');
+ else if(route.startsWith('/colecciones/')||route.startsWith('/collections/')){const id=route.split('/').at(-1);if(DEPARTMENTS[id])renderDepartment(id);else renderCatalog()}
  else if(route.startsWith('/producto/')||route.startsWith('/products/'))renderProduct(route.split('/').at(-1));
  else if(route==='/favoritos')renderFavorites();else if(route==='/regalos')renderGifts();else if(route==='/contacto')renderContact();else if(route==='/checkout')renderCheckout();else if(helpPages[route.slice(1)])renderHelp(route.slice(1));else renderNotFound();
  document.documentElement.dataset.ready='true';
+ if(location.hash){requestAnimationFrame(()=>document.getElementById(location.hash.slice(1))?.scrollIntoView({block:'start'}))}
  }catch(error){console.error(error);$('#main').innerHTML='<div class="wrap loading-state"><div class="empty-state"><h2>No pudimos cargar la tienda.</h2><p>Revisá tu conexión e intentá nuevamente.</p><button class="btn btn-primary" onclick="location.reload()">Volver a intentar</button></div></div>';$('#search-open').disabled=true;$('#cart-open').disabled=true}
 }
 boot();
