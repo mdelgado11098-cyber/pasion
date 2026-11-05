@@ -1,424 +1,23 @@
 <!DOCTYPE html>
 <html lang="es-UY">
 <head>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("pasion-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){}</script>
 <meta charset="utf-8">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preload" href="/assets/fonts/brand-3.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/brand-5.woff2" as="font" type="font/woff2" crossorigin>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pasión Lencería | Lencería y Sex Shop en Maldonado y Punta del Este</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Lencería, pijamas, bikinis y sex shop en Maldonado. Envío discreto a todo Uruguay, entrega en el día en Maldonado y Punta del Este y retiro en el local.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#3a0a18; --ink-2:#5a1a2c; --wine:#7a1f35;
-  --rose:#e03c50; --rose-2:#c92f43;
-  --blush:#fbf4f6; --blush-2:#f6e6eb; --pink:#f1bace;
-  --gold:#b98d7f; --line:#ecd9e0; --muted:#8a6470;
-  --white:#fff;
-  --serif:"Cormorant Garamond",Georgia,serif;
-  --sans:"Jost",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-  --r:18px; --shadow:0 18px 50px -20px rgba(58,10,24,.35);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--sans);color:var(--ink);background:var(--blush);font-weight:400;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
-.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:var(--rose)}
-.h2{font-family:var(--serif);font-weight:500;font-size:clamp(34px,4.2vw,52px);line-height:1.05;letter-spacing:-.01em}
-.h2 em{font-style:italic;color:var(--rose)}
-.lead{color:var(--muted);font-size:17px;max-width:560px}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:500;font-size:15px;letter-spacing:.02em;transition:transform .25s,background .25s,box-shadow .25s}
-.btn-primary{background:var(--ink);color:var(--blush)}
-.btn-primary:hover{background:var(--wine);transform:translateY(-2px);box-shadow:var(--shadow)}
-.btn-ghost{border:1.5px solid var(--ink);color:var(--ink)}
-.btn-ghost:hover{background:var(--ink);color:var(--blush)}
-.btn-rose{background:var(--rose);color:#fff}
-.btn-rose:hover{background:var(--rose-2);transform:translateY(-2px)}
-.sec{padding:96px 0}
-.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:44px;flex-wrap:wrap}
-.sec-head .lead{margin-top:12px}
+<meta name="description" content="Lencería, pijamas, bikinis y sex shop en Maldonado. Envío discreto a todo Uruguay y retiro en nuestro local de Maldonado.">
 
-/* announcement */
-.announce{background:var(--ink);color:var(--blush);font-size:13px;letter-spacing:.06em;height:38px;overflow:hidden;position:relative}
-.announce-track{display:flex;flex-direction:column;animation:ann 12s infinite}
-.announce-track span{height:38px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 16px;text-align:center}
-.announce b{color:var(--pink);font-weight:500}
-@keyframes ann{0%,28%{transform:translateY(0)}33%,61%{transform:translateY(-38px)}66%,94%{transform:translateY(-76px)}100%{transform:translateY(0)}}
 
-/* header */
-header{position:sticky;top:0;z-index:40;background:rgba(251,244,246,.88);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
-header.scrolled{border-bottom-color:var(--line)}
-.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:84px}
-.nav-links{display:flex;gap:30px;font-size:14px;letter-spacing:.04em}
-.nav-links a{position:relative;padding:6px 0}
-.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:1.5px;width:0;background:var(--rose);transition:width .3s}
-.nav-links a:hover::after{width:100%}
-.nav-links .adult{color:var(--rose);font-weight:500}
-.logo img{height:58px;width:auto}
-.nav-icons{display:flex;justify-content:flex-end;gap:6px}
-.icon-btn{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;position:relative;transition:background .2s}
-.icon-btn:hover{background:var(--blush-2)}
-.icon-btn svg{width:21px;height:21px}
-.cart-count{position:absolute;top:4px;right:2px;min-width:18px;height:18px;border-radius:9px;background:var(--rose);color:#fff;font-size:11px;font-weight:600;display:grid;place-items:center;padding:0 5px;transform:scale(0);transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
-.cart-count.show{transform:scale(1)}
-.burger{display:none}
 
-/* hero */
-.hero{position:relative;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;min-height:calc(100vh - 122px);max-height:860px;padding:40px 0 64px}
-.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,6.4vw,92px);line-height:.98;letter-spacing:-.02em;margin:22px 0 26px}
-.hero h1 em{font-style:italic;color:var(--rose)}
-.hero .quote{font-family:var(--serif);font-style:italic;font-size:21px;color:var(--ink-2);border-left:2px solid var(--pink);padding-left:16px;margin-bottom:34px;max-width:460px}
-.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
-.hero-meta{display:flex;gap:28px;margin-top:44px;flex-wrap:wrap}
-.hero-meta div{font-size:13px;color:var(--muted);line-height:1.35}
-.hero-meta strong{display:block;font-family:var(--serif);font-size:30px;color:var(--ink);font-weight:500}
-.hero-visual{position:relative;justify-self:end;width:100%;max-width:520px}
-.hero-img{border-radius:260px 260px var(--r) var(--r);overflow:hidden;aspect-ratio:4/5;box-shadow:var(--shadow)}
-.hero-img img{width:100%;height:100%;object-fit:cover;transform:scale(1.04);animation:zoom 14s ease-out forwards}
-@keyframes zoom{to{transform:scale(1)}}
-.float-card{position:absolute;background:var(--white);border-radius:16px;box-shadow:var(--shadow);padding:14px 18px;display:flex;align-items:center;gap:12px;font-size:13px}
-.float-card .dot{width:38px;height:38px;border-radius:50%;background:var(--blush-2);display:grid;place-items:center;flex:none}
-.float-card .dot svg{width:19px;height:19px;color:var(--rose)}
-.float-card strong{display:block;font-size:14px;font-weight:600}
-.fc-1{left:-44px;bottom:90px;animation:bob 6s ease-in-out infinite}
-.fc-2{right:-24px;top:70px;animation:bob 6s ease-in-out infinite 1.5s}
-@keyframes bob{50%{transform:translateY(-10px)}}
-.hero-blob{position:absolute;right:-180px;top:-120px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(241,186,206,.55),rgba(241,186,206,0) 68%);z-index:-1}
-
-/* trust */
-.trust{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.trust-grid{display:grid;grid-template-columns:repeat(4,1fr)}
-.trust-item{display:flex;gap:14px;align-items:center;padding:26px 22px;border-right:1px solid var(--line)}
-.trust-item:last-child{border-right:0}
-.trust-item svg{width:30px;height:30px;color:var(--rose);flex:none;stroke-width:1.4}
-.trust-item strong{display:block;font-size:15px;font-weight:500}
-.trust-item span{font-size:13px;color:var(--muted)}
-
-/* categories */
-.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.cat{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:3/4.3;isolation:isolate;color:#fff}
-.cat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1);z-index:-2}
-.cat::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(58,10,24,0) 45%,rgba(58,10,24,.82));z-index:-1}
-.cat:hover img{transform:scale(1.07)}
-.cat-body{position:absolute;left:22px;right:22px;bottom:22px;display:flex;justify-content:space-between;align-items:flex-end}
-.cat h3{font-family:var(--serif);font-weight:500;font-size:34px;line-height:1}
-.cat small{display:block;font-size:13px;opacity:.85;margin-top:6px;letter-spacing:.04em}
-.cat .arrow{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.18);backdrop-filter:blur(6px);display:grid;place-items:center;transition:background .3s}
-.cat:hover .arrow{background:var(--rose)}
-.cat .arrow svg{width:18px;height:18px}
-.cat.adult{background:radial-gradient(120% 80% at 30% 20%,#7a1f35,#2a0611 70%);display:flex;align-items:center;justify-content:center}
-.cat.adult::after{display:none}
-.cat.adult .mark{text-align:center}
-.cat.adult .mark svg{width:84px;height:84px;color:var(--pink);opacity:.9;margin:0 auto 14px}
-.cat.adult .mark span{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--pink)}
-.age-pill{position:absolute;top:18px;right:18px;font-size:12px;font-weight:600;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:4px 10px}
-
-/* products */
-.tabs{display:flex;gap:8px;background:var(--white);border:1px solid var(--line);padding:6px;border-radius:999px}
-.tab{padding:10px 20px;border-radius:999px;font-size:14px;font-weight:500;color:var(--muted);transition:all .25s}
-.tab.active{background:var(--ink);color:var(--blush)}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-.card{background:var(--white);border-radius:var(--r);overflow:hidden;transition:transform .35s,box-shadow .35s;animation:fadeUp .5s both}
-.card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}}
-.card-img{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--blush-2)}
-.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
-.card:hover .card-img img{transform:scale(1.05)}
-.badge{position:absolute;top:14px;left:14px;background:var(--white);color:var(--ink);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:6px 11px;border-radius:999px}
-.badge.hot{background:var(--rose);color:#fff}
-.fav{position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center;transition:transform .2s}
-.fav svg{width:18px;height:18px}
-.fav.on{color:var(--rose)}
-.fav.on svg{fill:currentColor}
-.fav:active{transform:scale(.85)}
-.quick{position:absolute;left:12px;right:12px;bottom:12px;background:var(--ink);color:var(--blush);border-radius:999px;padding:13px;font-size:14px;font-weight:500;display:flex;justify-content:center;gap:8px;align-items:center;transform:translateY(130%);transition:transform .35s cubic-bezier(.2,.7,.2,1),background .2s}
-.card:hover .quick{transform:none}
-.quick:hover{background:var(--rose)}
-.quick svg{width:17px;height:17px}
-.card-body{padding:16px 18px 20px}
-.card-body h4{font-weight:500;font-size:15.5px;margin-bottom:4px}
-.price{display:flex;align-items:baseline;gap:10px}
-.price b{font-family:var(--serif);font-size:24px;font-weight:600}
-.price s{color:var(--muted);font-size:14px}
-.price-note{font-size:12.5px;color:var(--muted);margin-top:2px}
-.see-all{display:flex;justify-content:center;margin-top:46px}
-
-/* editorial banner */
-.editorial{position:relative;border-radius:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;background:var(--ink);color:var(--blush);min-height:520px}
-.editorial-img{position:relative}
-.editorial-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.editorial-body{padding:64px;display:flex;flex-direction:column;justify-content:center}
-.editorial-body .eyebrow{color:var(--pink)}
-.editorial-body .h2{margin:16px 0 18px}
-.editorial-body .h2 em{color:var(--pink)}
-.editorial-body p{color:rgba(251,244,246,.75);max-width:420px;margin-bottom:30px}
-.mini-row{display:flex;gap:12px;margin-bottom:34px}
-.mini{width:84px;border-radius:12px;overflow:hidden;aspect-ratio:4/5;border:2px solid rgba(255,255,255,.12)}
-.mini img{width:100%;height:100%;object-fit:cover}
-.editorial .btn-primary{background:var(--blush);color:var(--ink);align-self:flex-start}
-.editorial .btn-primary:hover{background:var(--pink)}
-
-/* kits */
-.kits{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.kit{background:var(--white);border-radius:var(--r);padding:30px;border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
-.kit:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.kit-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px}
-.kit-ico{width:56px;height:56px;border-radius:16px;background:var(--blush-2);display:grid;place-items:center}
-.kit-ico svg{width:28px;height:28px;color:var(--rose)}
-.save{font-size:12px;font-weight:600;background:#fde8ec;color:var(--rose-2);padding:5px 10px;border-radius:999px}
-.kit h3{font-family:var(--serif);font-size:30px;font-weight:500;line-height:1.05;margin-bottom:8px}
-.kit p{color:var(--muted);font-size:14.5px;margin-bottom:18px}
-.kit ul{list-style:none;margin-bottom:24px;flex:1}
-.kit li{display:flex;justify-content:space-between;font-size:14px;padding:9px 0;border-bottom:1px dashed var(--line)}
-.kit li span:last-child{color:var(--muted)}
-.kit-foot{display:flex;justify-content:space-between;align-items:center}
-.kit-foot .price b{font-size:30px}
-.kit.custom{background:var(--ink);color:var(--blush);border-color:var(--ink)}
-.kit.custom p{color:rgba(251,244,246,.7)}
-.kit.custom .kit-ico{background:rgba(255,255,255,.08)}
-.kit.custom .kit-ico svg{color:var(--pink)}
-
-/* adult band */
-.adult-band{background:radial-gradient(90% 120% at 85% 10%,#7a1f35 0%,#3a0a18 55%,#22050d 100%);color:var(--blush);border-radius:28px;padding:72px 64px;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;position:relative;overflow:hidden}
-.adult-band .eyebrow{color:var(--pink)}
-.adult-band .h2{margin:16px 0 18px}
-.adult-band .h2 em{color:var(--pink)}
-.adult-band p.lead{color:rgba(251,244,246,.72)}
-.disc{display:grid;gap:14px;margin:30px 0 34px}
-.disc>div{display:flex;gap:14px;align-items:flex-start}
-.disc svg{width:22px;height:22px;color:var(--pink);flex:none;margin-top:2px}
-.disc strong{display:block;font-weight:500}
-.disc span{font-size:14px;color:rgba(251,244,246,.65)}
-.chips{display:flex;flex-wrap:wrap;gap:10px;align-content:center}
-.chip{border:1px solid rgba(241,186,206,.35);border-radius:999px;padding:12px 18px;font-size:14.5px;display:flex;gap:10px;align-items:center;transition:all .25s}
-.chip small{color:var(--pink);font-size:12px}
-.chip:hover{background:var(--pink);color:var(--ink);border-color:var(--pink)}
-.chip:hover small{color:var(--ink)}
-.adult-band .btn-rose{align-self:flex-start}
-.adult-glow{position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(224,60,80,.35),transparent 70%);right:-120px;bottom:-160px}
-
-/* guides */
-.guides{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.guide{border-radius:var(--r);padding:30px;background:var(--white);border:1px solid var(--line);position:relative;overflow:hidden;transition:transform .3s}
-.guide:hover{transform:translateY(-4px)}
-.guide .num{font-family:var(--serif);font-size:64px;line-height:1;color:var(--pink);font-style:italic}
-.guide h3{font-family:var(--serif);font-size:28px;font-weight:500;margin:10px 0 8px;line-height:1.1}
-.guide p{color:var(--muted);font-size:14.5px;margin-bottom:20px}
-.guide a{font-weight:500;font-size:14px;display:inline-flex;gap:8px;align-items:center;color:var(--rose)}
-.guide a svg{width:16px;height:16px;transition:transform .25s}
-.guide:hover a svg{transform:translateX(4px)}
-
-/* local */
-.local{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
-.local-img{border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;position:relative;box-shadow:var(--shadow)}
-.local-img img{width:100%;height:100%;object-fit:cover}
-.local-tag{position:absolute;left:18px;bottom:18px;background:var(--white);border-radius:14px;padding:12px 16px;font-size:13px;display:flex;gap:10px;align-items:center}
-.local-tag i{width:9px;height:9px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.2)}
-.info-list{display:grid;gap:4px;margin:30px 0 34px}
-.info{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
-.info svg{width:24px;height:24px;color:var(--rose);flex:none}
-.info strong{display:block;font-weight:500}
-.info span{color:var(--muted);font-size:14.5px}
-.local .btns{display:flex;gap:12px;flex-wrap:wrap}
-
-/* reviews */
-.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.review{background:var(--white);border-radius:var(--r);padding:30px;border:1px solid var(--line);position:relative}
-.stars{color:#e8a23a;letter-spacing:3px;font-size:16px;margin-bottom:14px}
-.review p{font-family:var(--serif);font-size:21px;line-height:1.35;margin-bottom:20px}
-.review .who{display:flex;align-items:center;gap:12px;font-size:14px}
-.review .av{width:40px;height:40px;border-radius:50%;background:var(--blush-2);display:grid;place-items:center;font-weight:600;color:var(--rose)}
-.review .who span{color:var(--muted);font-size:13px;display:block}
-.verified{font-size:12px;color:#15803d;display:flex;align-items:center;gap:5px;margin-top:2px}
-.sample{position:absolute;top:16px;right:16px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);padding:3px 8px;border-radius:999px}
-.rating-sum{display:flex;align-items:center;gap:16px}
-.rating-sum b{font-family:var(--serif);font-size:56px;font-weight:500;line-height:1}
-.rating-sum div{font-size:14px;color:var(--muted)}
-
-/* newsletter */
-.news{background:var(--pink);border-radius:28px;padding:64px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;position:relative;overflow:hidden}
-.news .h2 em{color:var(--ink);opacity:.8}
-.news p{color:var(--ink-2);margin-top:12px}
-.news form{display:flex;background:var(--white);border-radius:999px;padding:6px;box-shadow:0 10px 30px -15px rgba(58,10,24,.4)}
-.news input{flex:1;border:0;background:none;padding:0 20px;font:inherit;font-size:15px;color:var(--ink);outline:none;min-width:0}
-.news small{display:block;margin-top:12px;font-size:12.5px;color:var(--ink-2)}
-.big-ten{position:absolute;right:-10px;bottom:-70px;font-family:var(--serif);font-style:italic;font-size:240px;line-height:1;color:rgba(255,255,255,.35);pointer-events:none}
-
-/* faq */
-.faq{max-width:860px;margin:0 auto}
-.q{border-bottom:1px solid var(--line)}
-.q button{width:100%;text-align:left;padding:24px 0;display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:18px;font-weight:500}
-.q .plus{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;flex:none;transition:transform .3s,background .3s}
-.q.open .plus{transform:rotate(45deg);background:var(--ink);color:var(--blush);border-color:var(--ink)}
-.q .a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s}
-.q.open .a{grid-template-rows:1fr}
-.q .a>div{overflow:hidden;color:var(--muted);font-size:15.5px}
-.q .a>div p{padding:0 50px 24px 0}
-
-/* footer */
-footer{background:var(--ink);color:rgba(251,244,246,.75);padding:80px 0 30px;margin-top:40px}
-.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px}
-.foot h5{color:var(--blush);font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;margin-bottom:18px}
-.foot a{display:block;padding:5px 0;font-size:14.5px;transition:color .2s}
-.foot a:hover{color:var(--pink)}
-.foot .flogo{height:70px;width:auto;margin-bottom:18px;filter:brightness(0) invert(1);opacity:.92}
-.foot p{font-size:14.5px;max-width:300px}
-.socials{display:flex;gap:10px;margin-top:20px}
-.socials a{width:42px;height:42px;border-radius:50%;border:1px solid rgba(251,244,246,.2);display:grid;place-items:center;padding:0}
-.socials a:hover{background:var(--blush);color:var(--ink)}
-.socials svg{width:18px;height:18px}
-.pays{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-.pays span{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:7px 10px;font-size:12px;font-weight:500;color:var(--blush)}
-.foot-bottom{border-top:1px solid rgba(251,244,246,.12);margin-top:56px;padding-top:24px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13px}
-
-/* whatsapp fab */
-.wa{position:fixed;right:22px;bottom:22px;z-index:45;display:flex;align-items:center;gap:12px}
-.wa-bubble{background:var(--white);color:var(--ink);padding:12px 16px;border-radius:16px 16px 4px 16px;box-shadow:var(--shadow);font-size:14px;max-width:220px;opacity:0;transform:translateY(10px);transition:all .5s;pointer-events:none}
-.wa-bubble.show{opacity:1;transform:none}
-.wa-bubble strong{display:block;font-size:13px;color:var(--rose)}
-.wa-btn{width:62px;height:62px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(37,211,102,.6);transition:transform .25s;position:relative}
-.wa-btn:hover{transform:scale(1.08)}
-.wa-btn svg{width:32px;height:32px;color:#fff}
-.wa-btn::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:ping 2.4s infinite}
-@keyframes ping{to{transform:scale(1.5);opacity:0}}
-
-/* cart drawer */
-.overlay{position:fixed;inset:0;background:rgba(34,5,13,.45);backdrop-filter:blur(3px);z-index:60;opacity:0;pointer-events:none;transition:opacity .35s}
-.overlay.show{opacity:1;pointer-events:auto}
-.drawer{position:fixed;top:0;right:0;height:100%;width:min(440px,100%);background:var(--blush);z-index:61;transform:translateX(100%);transition:transform .45s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column}
-.drawer.show{transform:none}
-.dr-head{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;border-bottom:1px solid var(--line)}
-.dr-head h3{font-family:var(--serif);font-size:30px;font-weight:500}
-.ship{padding:18px 24px;background:var(--white);border-bottom:1px solid var(--line);font-size:14px}
-.bar{height:7px;border-radius:9px;background:var(--blush-2);margin-top:10px;overflow:hidden}
-.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--rose));border-radius:9px;transition:width .6s}
-.dr-items{flex:1;overflow:auto;padding:10px 24px}
-.dr-item{display:grid;grid-template-columns:76px 1fr auto;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);align-items:center}
-.dr-item img{width:76px;height:95px;object-fit:cover;border-radius:10px}
-.dr-item h5{font-size:15px;font-weight:500}
-.qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;margin-top:8px;background:var(--white)}
-.qty button{width:30px;height:30px;font-size:16px}
-.qty span{min-width:22px;text-align:center;font-size:14px}
-.dr-item .p{font-family:var(--serif);font-size:20px;font-weight:600}
-.empty{text-align:center;padding:60px 10px;color:var(--muted)}
-.empty svg{width:52px;height:52px;margin:0 auto 14px;color:var(--pink)}
-.dr-foot{padding:22px 24px;border-top:1px solid var(--line);background:var(--white)}
-.dr-total{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
-.dr-total b{font-family:var(--serif);font-size:30px}
-.dr-note{font-size:12.5px;color:var(--muted);margin-bottom:16px;display:flex;gap:6px;align-items:center}
-.dr-note svg{width:14px;height:14px}
-.dr-foot .btn{width:100%;justify-content:center}
-.dr-foot .btn+.btn{margin-top:10px}
-
-/* age gate */
-.gate{position:fixed;inset:0;z-index:100;background:radial-gradient(120% 100% at 50% 0%,#5a1a2c,#22050d);display:grid;place-items:center;padding:24px;transition:opacity .5s}
-.gate.hide{opacity:0;pointer-events:none}
-.gate-box{background:var(--blush);border-radius:28px;padding:48px 40px;max-width:440px;width:100%;text-align:center;box-shadow:0 30px 80px -20px rgba(0,0,0,.6);animation:pop .6s cubic-bezier(.2,1.2,.4,1)}
-@keyframes pop{from{opacity:0;transform:scale(.92) translateY(20px)}}
-.gate-box img{height:92px;width:auto;margin:0 auto 20px}
-.gate-box h2{font-family:var(--serif);font-weight:500;font-size:32px;line-height:1.1;margin-bottom:10px}
-.gate-box p{color:var(--muted);font-size:15px;margin-bottom:28px}
-.gate-box .btn{width:100%;justify-content:center}
-.gate-box .no{margin-top:14px;font-size:14px;color:var(--muted);text-decoration:underline}
-
-/* toast */
-.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,160%);opacity:0;white-space:nowrap;max-width:calc(100vw - 32px);background:var(--ink);color:var(--blush);padding:14px 22px;border-radius:999px;font-size:14px;z-index:70;display:flex;gap:10px;align-items:center;transition:transform .45s cubic-bezier(.2,1.2,.4,1);box-shadow:var(--shadow)}
-.toast.show{transform:translate(-50%,0);opacity:1}
-.toast svg{width:18px;height:18px;color:var(--pink)}
-
-/* demo badge */
-.demo-badge{position:fixed;left:18px;bottom:18px;z-index:44;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:999px;padding:8px 14px 8px 10px;font-size:12px;display:flex;gap:8px;align-items:center;color:var(--muted);box-shadow:0 8px 20px -12px rgba(58,10,24,.4)}
-.demo-badge b{color:var(--ink);font-weight:600;letter-spacing:.06em}
-.demo-badge i{width:8px;height:8px;border-radius:50%;background:var(--rose)}
-
-/* mobile menu */
-.mmenu{position:fixed;inset:0;z-index:62;background:var(--blush);transform:translateX(-100%);transition:transform .45s cubic-bezier(.2,.8,.2,1);padding:24px;display:flex;flex-direction:column}
-.mmenu.show{transform:none}
-.mmenu nav{display:flex;flex-direction:column;margin-top:30px}
-.mmenu nav a{font-family:var(--serif);font-size:38px;padding:10px 0;border-bottom:1px solid var(--line)}
-.mmenu nav a.adult{color:var(--rose)}
-.mmenu .btn{margin-top:auto;justify-content:center}
-
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s,transform .9s cubic-bezier(.2,.7,.2,1)}
-.reveal.in{opacity:1;transform:none}
-
-/* responsive */
-@media (max-width:1080px){
-  .nav-links{display:none}
-  .burger{display:grid}
-  .nav{grid-template-columns:auto 1fr auto}
-  .logo{justify-self:center}
-  .grid{grid-template-columns:repeat(3,1fr)}
-  .cats{grid-template-columns:repeat(2,1fr)}
-  .foot{grid-template-columns:1fr 1fr}
-}
-@media (max-width:860px){
-  .sec{padding:68px 0}
-  .hero-grid{grid-template-columns:1fr;min-height:0;max-height:none;gap:40px;padding:28px 0 56px}
-  .hero-visual{justify-self:center;max-width:420px}
-  .fc-1{left:-8px;bottom:40px}
-  .fc-2{right:-8px;top:40px}
-  .trust-grid{grid-template-columns:1fr 1fr}
-  .trust-item:nth-child(2){border-right:0}
-  .trust-item:nth-child(-n+2){border-bottom:1px solid var(--line)}
-  .grid{grid-template-columns:repeat(2,1fr);gap:14px}
-  .editorial{grid-template-columns:1fr}
-  .editorial-img{min-height:380px}
-  .editorial-body{padding:40px 28px}
-  .kits,.guides,.reviews{grid-template-columns:1fr}
-  .adult-band{grid-template-columns:1fr;padding:48px 28px;gap:32px}
-  .local{grid-template-columns:1fr;gap:36px}
-  .news{grid-template-columns:1fr;padding:44px 28px}
-  .big-ten{display:none}
-  .quick{transform:none;padding:10px;font-size:13px}
-  .demo-badge{display:none}
-}
-@media (max-width:520px){
-  .wrap{padding:0 16px}
-  .logo img{height:46px}
-  .nav{height:70px}
-  .hero h1{font-size:46px}
-  .hero-meta{gap:20px}
-  .hero-meta strong{font-size:26px}
-  .cats{gap:12px}
-  .cat h3{font-size:26px}
-  .cat-body{left:14px;right:14px;bottom:14px}
-  .cat .arrow{width:36px;height:36px}
-  .tabs{width:100%;overflow-x:auto}
-  .tab{padding:9px 14px;white-space:nowrap}
-  .card-body{padding:12px 12px 14px}
-  .card-body h4{font-size:14px}
-  .price b{font-size:20px}
-  .quick span{display:none}
-  .quick{left:auto;right:10px;bottom:10px;width:42px;height:42px;padding:0;border-radius:50%}
-  .foot{grid-template-columns:1fr}
-  .news form{flex-direction:column;border-radius:20px;gap:6px}
-  .news input{padding:14px 16px}
-  .news .btn{justify-content:center}
-  .wa-bubble{display:none}
-  .trust-item{padding:18px 14px;gap:10px}
-  .trust-item svg{width:24px;height:24px}
-  .trust-item strong{font-size:14px}
-  .trust-item span{font-size:12px}
-  .q .a>div p{padding-right:0}
-  .badge{font-size:9.5px;padding:5px 8px;top:10px;left:10px;letter-spacing:.08em}
-  .fav{width:32px;height:32px;top:8px;right:8px}
-  .cat.adult .mark{margin-bottom:70px}
-  .cat.adult .mark svg{width:58px;height:58px;margin-bottom:0}
-  .cat.adult .mark span{display:none}
-  .toast{bottom:auto;top:86px;transform:translate(-50%,-30px);font-size:13px}
-  .toast.show{transform:translate(-50%,0)}
-}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-@media(max-width:480px){.announce-track span{font-size:10px;gap:5px;white-space:nowrap}.announce-track b{white-space:nowrap}}
-</style>
+<link rel="stylesheet" href="/styles/fonts.css">
+<link rel="stylesheet" href="/styles/base.css">
+<link rel="stylesheet" href="/styles/shop.css">
 </head>
-<body>
+<body data-page="home"><a class="skip" href="#main">Saltar al contenido</a>
 
 <!-- AGE GATE -->
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-t">
@@ -434,7 +33,7 @@ footer{background:var(--ink);color:rgba(251,244,246,.75);padding:80px 0 30px;mar
 <div class="announce" aria-label="Novedades">
   <div class="announce-track">
     <span>🚚 <b>Envío gratis</b> en compras desde $3.500 a todo Uruguay</span>
-    <span>⚡ <b>Entrega en el día</b> en Maldonado y Punta del Este</span>
+    <span>Retirá tu compra <b>sin costo</b> en nuestro local de Maldonado</span>
     <span>🤍 Empaque <b>100% discreto</b>, sin logos ni referencias</span>
   </div>
 </div>
@@ -442,19 +41,19 @@ footer{background:var(--ink);color:rgba(251,244,246,.75);padding:80px 0 30px;mar
 <header id="hdr">
   <div class="wrap nav">
     <div class="nav-links">
-      <a href="#productos">Lencería</a>
-      <a href="#productos">Pijamas</a>
-      <a href="#temporada">Bikinis</a>
-      <a href="#kits">Regalos</a>
-      <a href="#sexshop" class="adult">Sex Shop +18</a>
+      <a href="/colecciones/lenceria">Lencería</a>
+      <a href="/colecciones/pijamas">Pijamas</a>
+      <a href="/colecciones/bikinis">Bikinis</a>
+      <a href="/regalos">Regalos</a>
+      <a href="/sex-shop" class="adult">Sex Shop +18</a>
     </div>
     <button class="icon-btn burger" id="burger" aria-label="Abrir menú">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
     </button>
-    <a href="#" class="logo" aria-label="Pasión Lencería, inicio"><img src="/assets/logo.png" alt="Pasión Lencería"></a>
+    <a href="/" class="logo" aria-label="Pasión Lencería, inicio"><img src="/assets/logo.png" alt="Pasión Lencería"></a>
     <div class="nav-icons">
-      <button class="icon-btn" aria-label="Buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
-      <a class="icon-btn" href="#local" aria-label="Nuestro local"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></a>
+      <button class="icon-btn" id="search-open" aria-label="Buscar productos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      <a class="icon-btn" href="/contacto" aria-label="Nuestro local"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></a>
       <button class="icon-btn" id="cart-open" aria-label="Abrir carrito">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
         <span class="cart-count" id="cart-count">0</span>
@@ -469,17 +68,17 @@ footer{background:var(--ink);color:rgba(251,244,246,.75);padding:80px 0 30px;mar
     <button class="icon-btn" id="mclose" aria-label="Cerrar menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
   </div>
   <nav>
-    <a href="#productos">Lencería</a>
-    <a href="#productos">Pijamas</a>
-    <a href="#temporada">Bikinis</a>
-    <a href="#kits">Regalos</a>
-    <a href="#sexshop" class="adult">Sex Shop +18</a>
-    <a href="#local">Nuestro local</a>
+    <a href="/colecciones/lenceria">Lencería</a>
+    <a href="/colecciones/pijamas">Pijamas</a>
+    <a href="/colecciones/bikinis">Bikinis</a>
+    <a href="/regalos">Regalos</a>
+    <a href="/sex-shop" class="adult">Sex Shop +18</a>
+    <a href="/contacto">Nuestro local</a>
   </nav>
   <a class="btn btn-primary" href="https://wa.me/59899251508?text=Hola!%20Quiero%20ayuda%20para%20elegir" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
 </div>
 
-<main>
+<main id="main">
 <!-- HERO -->
 <section class="hero">
   <div class="hero-blob"></div>
@@ -489,21 +88,21 @@ footer{background:var(--ink);color:rgba(251,244,246,.75);padding:80px 0 30px;mar
       <h1>Sentite <em>irresistible</em>, todos los días.</h1>
       <p class="quote">“La lencería es la poesía en el guardarropas de una mujer.”</p>
       <div class="hero-ctas">
-        <a href="#productos" class="btn btn-primary">Ver la colección
+        <a href="/catalogo" class="btn btn-primary">Ver la colección
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a href="https://wa.me/59899251508?text=Hola!%20Quiero%20ayuda%20para%20elegir" target="_blank" rel="noopener" class="btn btn-ghost">Te ayudamos a elegir</a>
       </div>
       <div class="hero-meta">
         <div><strong>+300</strong>productos en stock</div>
         <div><strong>48 h</strong>a todo Uruguay</div>
-        <div><strong>Hoy</strong>en Maldonado y Punta</div>
+        <div><strong>Retirá</strong>en nuestro local</div>
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-img"><img src="/assets/monica.png" alt="Bata Mónica en encaje rojo"></div>
+      <div class="hero-img"><img src="/assets/monica.webp" alt="Bata Mónica en encaje rojo"></div>
       <div class="float-card fc-1">
         <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg></div>
-        <div><strong>Llega hoy</strong>Maldonado y Punta del Este</div>
+        <div><strong>Elegí tu entrega</strong>Envío o retiro en Maldonado</div>
       </div>
       <div class="float-card fc-2">
         <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></div>
@@ -522,7 +121,7 @@ footer{background:var(--ink);color:rgba(251,244,246,.75);padding:80px 0 30px;mar
     </div>
     <div class="trust-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
-      <div><strong>Cargo discreto</strong><span>En tu resumen de tarjeta</span></div>
+      <div><strong>Atención personal</strong><span>Te ayudamos a elegir</span></div>
     </div>
     <div class="trust-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
@@ -542,13 +141,13 @@ footer{background:var(--ink);color:rgba(251,244,246,.75);padding:80px 0 30px;mar
       <div><span class="eyebrow">Explorá</span><h2 class="h2" style="margin-top:10px">Encontrá lo que <em>te hace sentir bien</em></h2></div>
     </div>
     <div class="cats">
-      <a href="#productos" class="cat reveal" data-tab="lenceria"><img src="/assets/malena.webp" alt="Conjunto de encaje negro">
+      <a href="/colecciones/lenceria" class="cat reveal" data-tab="lenceria"><img src="/assets/malena.webp" alt="Conjunto de encaje negro">
         <div class="cat-body"><div><h3>Lencería</h3><small>112 modelos</small></div><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M8 7h9v9"/></svg></span></div></a>
-      <a href="#productos" class="cat reveal" data-tab="pijamas"><img src="/assets/seda.jpg" alt="Pijama símil seda rosa">
+      <a href="/colecciones/pijamas" class="cat reveal" data-tab="pijamas"><img src="/assets/seda.webp" alt="Pijama símil seda rosa">
         <div class="cat-body"><div><h3>Pijamas</h3><small>Seda, plush y algodón</small></div><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M8 7h9v9"/></svg></span></div></a>
-      <a href="#productos" class="cat reveal" data-tab="bikinis"><img src="/assets/evelyn.webp" alt="Bikini azul en la arena">
+      <a href="/colecciones/bikinis" class="cat reveal" data-tab="bikinis"><img src="/assets/evelyn.webp" alt="Bikini azul en la arena">
         <div class="cat-body"><div><h3>Bikinis</h3><small>Temporada 2026/27</small></div><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M8 7h9v9"/></svg></span></div></a>
-      <a href="#sexshop" class="cat adult reveal">
+      <a href="/sex-shop" class="cat adult reveal">
         <span class="age-pill">+18</span>
         <div class="mark">
           <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M32 54S12 41.5 12 26a10 10 0 0 1 20-3 10 10 0 0 1 20 3c0 15.5-20 28-20 28Z"/><path d="M32 6c4 5 9 7 9 13a9 9 0 0 1-18 0c0-3 1.5-5 3-6 0 3 2 4.5 3.5 4.5C29.5 13 31 9 32 6Z" fill="currentColor" stroke="none" opacity=".85"/></svg>
@@ -570,8 +169,8 @@ footer{background:var(--ink);color:rgba(251,244,246,.75);padding:80px 0 30px;mar
         <button class="tab" data-tab="bikinis" role="tab">Bikinis</button>
       </div>
     </div>
-    <div class="grid" id="grid"></div>
-    <div class="see-all"><a href="https://www.pasionuy.com/collections/all" class="btn btn-ghost">Ver todos los productos</a></div>
+    <div class="grid" id="grid" aria-live="polite"><p>Cargando nuestros favoritos…</p></div>
+    <div class="see-all"><a href="/catalogo" class="btn btn-ghost">Ver todos los productos</a></div>
   </div>
 </section>
 
@@ -583,52 +182,21 @@ footer{background:var(--ink);color:rgba(251,244,246,.75);padding:80px 0 30px;mar
       <div class="editorial-body">
         <span class="eyebrow">Temporada en Punta del Este</span>
         <h2 class="h2">Bikinis que se <em>roban la playa</em></h2>
-        <p>Colaless regulables, enterizas con volados y brillos para la noche. Probátelos en el local o pedilos y te llegan hoy a tu casa o a tu hotel en Punta.</p>
+        <p>Colaless regulables, enterizas con volados y brillos para la noche. Probátelos en el local o pedilos y coordiná la entrega a tu casa o a tu hotel en Punta.</p>
         <div class="mini-row">
           <div class="mini"><img src="/assets/brillos.webp" alt="Bikini con brillos"></div>
           <div class="mini"><img src="/assets/malla.webp" alt="Malla enteriza negra"></div>
-          <div class="mini"><img src="/assets/raelua.jpg" alt="Bikini estampado"></div>
+          <div class="mini"><img src="/assets/raelua.webp" alt="Bikini estampado"></div>
         </div>
-        <a href="#productos" class="btn btn-primary" data-tab="bikinis">Ver bikinis desde $350
+        <a href="/colecciones/bikinis" class="btn btn-primary" data-tab="bikinis">Descubrir bikinis
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- KITS -->
-<section class="sec" id="kits" style="padding-top:20px">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div><span class="eyebrow">Kits para regalar</span><h2 class="h2" style="margin-top:10px">El regalo perfecto, <em>ya armado</em></h2>
-      <p class="lead">Combinamos lo que más se lleva para que sorprendas sin pensarlo. Llega envuelto y en empaque discreto.</p></div>
-    </div>
-    <div class="kits">
-      <div class="kit reveal">
-        <div class="kit-top"><div class="kit-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></div><span class="save">Ahorrás $158</span></div>
-        <h3>Noche especial</h3>
-        <p>Para una noche que no se olvida.</p>
-        <ul><li><span>Baby Doll Kora</span><span>$799</span></li><li><span>Vela besable saborizada</span><span>$499</span></li><li><span>Set de 3 dados para parejas</span><span>$350</span></li></ul>
-        <div class="kit-foot"><div class="price"><b>$1.490</b><s>$1.648</s></div><button class="btn btn-primary" data-kit="Kit Noche especial" data-price="1490" data-img="kora">Agregar</button></div>
-      </div>
-      <div class="kit reveal">
-        <div class="kit-top"><div class="kit-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c2.5 3 5 5 5 9a5 5 0 0 1-10 0c0-1.8.8-3 1.8-3.8C9 10 10 11 11 11c-.4-2.6 0-5.4 1-8Z"/></svg></div><span class="save">Ahorrás $119</span></div>
-        <h3>Spa en pareja</h3>
-        <p>Masajes, aromas y un toque de misterio.</p>
-        <ul><li><span>Aceite corporal comestible</span><span>$510</span></li><li><span>Vela besable saborizada</span><span>$499</span></li><li><span>Antifaz de satén</span><span>$200</span></li></ul>
-        <div class="kit-foot"><div class="price"><b>$1.090</b><s>$1.209</s></div><button class="btn btn-primary" data-kit="Kit Spa en pareja" data-price="1090" data-img="velas">Agregar</button></div>
-      </div>
-      <div class="kit custom reveal">
-        <div class="kit-top"><div class="kit-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7S10.5 3 8 3.5 7 7 12 7Zm0 0s1.5-4 4-3.5S17 7 12 7Z"/></svg></div></div>
-        <h3>Armalo a tu medida</h3>
-        <p>Contanos para quién es y cuánto querés gastar. Te armamos el kit ideal y te mandamos fotos por WhatsApp antes de pagar.</p>
-        <ul style="border:0"><li style="border-color:rgba(255,255,255,.12)"><span>Cumpleaños y aniversarios</span><span>✓</span></li><li style="border-color:rgba(255,255,255,.12)"><span>Despedidas de soltera</span><span>✓</span></li><li style="border-color:rgba(255,255,255,.12)"><span>Tarjeta con dedicatoria</span><span>✓</span></li></ul>
-        <a href="https://wa.me/59899251508?text=Hola!%20Quiero%20armar%20un%20kit%20de%20regalo" target="_blank" rel="noopener" class="btn btn-rose" style="justify-content:center">Armar mi kit por WhatsApp</a>
-      </div>
-    </div>
-  </div>
-</section>
-
+<!-- GIFTS -->
+<section class="sec" id="kits" style="padding-top:20px"><div class="wrap gift-home"><img src="/assets/kora.webp" alt="Baby Doll Kora para regalar" loading="lazy"><div><span class="eyebrow">Regalos con intención</span><h2 class="h2">Un detalle que dice <em>mucho.</em></h2><p>Lencería, un pijama suave o algo para compartir. Encontrá ideas por presupuesto y armá tu regalo con una dedicatoria.</p><a href="/regalos" class="btn btn-primary">Encontrar un regalo</a></div></div></section>
 <!-- SEX SHOP -->
 <section class="sec" id="sexshop" style="padding-top:20px">
   <div class="wrap">
@@ -640,23 +208,23 @@ footer{background:var(--ink);color:rgba(251,244,246,.75);padding:80px 0 30px;mar
         <p class="lead">Juguetes, cosmética íntima y juegos para disfrutar sola o en pareja. Te asesoramos sin vergüenza y sin juzgar.</p>
         <div class="disc">
           <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="m3 8 9 5 9-5"/></svg><div><strong>Paquete sin ninguna referencia</strong><span>Nadie sabe lo que hay adentro, ni el cadete.</span></div></div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg><div><strong>Remitente y facturación reservados</strong><span>En tu tarjeta no aparece “sex shop”.</span></div></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg><div><strong>Atención con total discreción</strong><span>Coordinamos el pago de forma personal.</span></div></div>
           <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12a8.5 8.5 0 0 1-12.5 7.5L3 21l1.5-5.5A8.5 8.5 0 1 1 21 12Z"/></svg><div><strong>¿Primera vez? Te guiamos</strong><span>Escribinos y te recomendamos según lo que buscás.</span></div></div>
         </div>
-        <a href="https://www.pasionuy.com/pages/sex-shop" class="btn btn-rose">Entrar al Sex Shop
+        <a href="/sex-shop" class="btn btn-rose">Entrar al Sex Shop
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="chips" style="position:relative">
-        <a class="chip" href="https://www.pasionuy.com/pages/sex-shop">Vibradores <small>46</small></a>
-        <a class="chip" href="https://www.pasionuy.com/pages/sex-shop">Succionadores <small>12</small></a>
-        <a class="chip" href="https://www.pasionuy.com/pages/sex-shop">Estimuladores <small>22</small></a>
-        <a class="chip" href="https://www.pasionuy.com/pages/sex-shop">Cosmética íntima <small>85</small></a>
-        <a class="chip" href="https://www.pasionuy.com/pages/sex-shop">Lubricantes <small>con sabor</small></a>
-        <a class="chip" href="https://www.pasionuy.com/pages/sex-shop">Juegos para parejas <small>65</small></a>
-        <a class="chip" href="https://www.pasionuy.com/pages/sex-shop">Para él <small>36</small></a>
-        <a class="chip" href="https://www.pasionuy.com/pages/sex-shop">Disfraces <small>nuevo</small></a>
-        <a class="chip" href="https://www.pasionuy.com/pages/sex-shop">Bondage suave <small>11</small></a>
-        <a class="chip" href="https://www.pasionuy.com/pages/sex-shop">Despedida de soltera <small>🎉</small></a>
+        <a class="chip" href="/sex-shop">Vibradores <small>46</small></a>
+        <a class="chip" href="/sex-shop">Succionadores <small>12</small></a>
+        <a class="chip" href="/sex-shop">Estimuladores <small>22</small></a>
+        <a class="chip" href="/sex-shop">Cosmética íntima <small>85</small></a>
+        <a class="chip" href="/sex-shop">Lubricantes <small>con sabor</small></a>
+        <a class="chip" href="/sex-shop">Juegos para parejas <small>65</small></a>
+        <a class="chip" href="/sex-shop">Para él <small>36</small></a>
+        <a class="chip" href="/sex-shop">Disfraces <small>nuevo</small></a>
+        <a class="chip" href="/sex-shop">Bondage suave <small>11</small></a>
+        <a class="chip" href="/sex-shop">Despedida de soltera <small>🎉</small></a>
       </div>
     </div>
   </div>
@@ -669,9 +237,9 @@ footer{background:var(--ink);color:rgba(251,244,246,.75);padding:80px 0 30px;mar
       <div><span class="eyebrow">Te ayudamos a elegir</span><h2 class="h2" style="margin-top:10px">Comprá <em>con confianza</em></h2></div>
     </div>
     <div class="guides">
-      <div class="guide reveal"><div class="num">01</div><h3>Guía de talles</h3><p>Cómo medirte en 2 minutos para acertar con tu sutién y tu conjunto. Copas de la A a la D.</p><a href="https://www.pasionuy.com/pages/guia-de-talles">Ver la guía <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      <div class="guide reveal"><div class="num">02</div><h3>Tu primer juguete</h3><p>Vibrador, succionador o estimulador: diferencias, para quién es cada uno y cómo cuidarlos.</p><a href="https://www.pasionuy.com/pages/sex-shop">Leer más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      <div class="guide reveal"><div class="num">03</div><h3>Ideas para regalar</h3><p>Aniversario, cumpleaños o una sorpresa porque sí. Opciones por presupuesto, desde $500.</p><a href="#kits">Ver ideas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      <div class="guide reveal"><div class="num" aria-hidden="true">01</div><h3>Guía de talles</h3><p>Cómo medirte en 2 minutos para acertar con tu sutién y tu conjunto. Te asesoramos según cada modelo.</p><a href="/guia-de-talles">Ver la guía <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      <div class="guide reveal"><div class="num" aria-hidden="true">02</div><h3>Tu primer juguete</h3><p>Vibrador, succionador o estimulador: diferencias, para quién es cada uno y cómo cuidarlos.</p><a href="/sex-shop">Leer más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      <div class="guide reveal"><div class="num" aria-hidden="true">03</div><h3>Ideas para regalar</h3><p>Aniversario, cumpleaños o una sorpresa porque sí. Opciones por presupuesto, desde $500.</p><a href="/regalos">Ver ideas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     </div>
   </div>
 </section>
@@ -687,8 +255,8 @@ footer{background:var(--ink);color:rgba(251,244,246,.75);padding:80px 0 30px;mar
       <p class="lead" style="margin-top:14px">Probate lo que quieras, con tranquilidad y atención personalizada. Y si comprás online, retirás gratis acá.</p>
       <div class="info-list">
         <div class="info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><strong>Constitución y Bahía Blanca</strong><span>Maldonado, Uruguay</span></div></div>
-        <div class="info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><strong>Lunes a sábado de 10 a 20 h</strong><span>Domingos atendemos por WhatsApp</span></div></div>
-        <div class="info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><div><strong>Entrega en el día</strong><span>Maldonado, Punta del Este y San Carlos, pidiendo antes de las 15 h</span></div></div>
+        <div class="info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><strong>Coordiná tu visita con Pasión</strong><span>Consultá los horarios por WhatsApp</span></div></div>
+        <div class="info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><div><strong>Entrega local a coordinar</strong><span>Consultá opciones para Maldonado, Punta del Este y San Carlos</span></div></div>
       </div>
       <div class="btns">
         <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Constituci%C3%B3n+y+Bah%C3%ADa+Blanca+Maldonado+Uruguay" target="_blank" rel="noopener">Cómo llegar</a>
@@ -698,49 +266,20 @@ footer{background:var(--ink);color:rgba(251,244,246,.75);padding:80px 0 30px;mar
   </div>
 </section>
 
-<!-- REVIEWS -->
-<section class="sec" style="padding-top:20px">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div><span class="eyebrow">Reseñas</span><h2 class="h2" style="margin-top:10px">Lo que dicen <em>ellas</em></h2></div>
-      <p class="lead" style="max-width:360px">Cada clienta puede dejar su reseña después de comprar, y aparecen acá automáticamente.</p>
-    </div>
-    <div class="reviews">
-      <div class="review reveal"><span class="sample">Ejemplo</span><div class="stars">★★★★★</div><p>“Me llegó el mismo día a Punta del Este y el paquete no decía nada. El conjunto es divino y el talle perfecto.”</p><div class="who"><div class="av">C</div><div><strong>Clienta de Punta del Este</strong><span class="verified">✓ Compra verificada</span></div></div></div>
-      <div class="review reveal"><span class="sample">Ejemplo</span><div class="stars">★★★★★</div><p>“Me daba vergüenza preguntar y me asesoraron súper bien por WhatsApp. Re recomiendo.”</p><div class="who"><div class="av">L</div><div><strong>Clienta de Maldonado</strong><span class="verified">✓ Compra verificada</span></div></div></div>
-      <div class="review reveal"><span class="sample">Ejemplo</span><div class="stars">★★★★★</div><p>“Le regalé el kit a mi novia para el aniversario y fue un éxito. Vino envuelto y con tarjeta.”</p><div class="who"><div class="av">M</div><div><strong>Cliente de San Carlos</strong><span class="verified">✓ Compra verificada</span></div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- NEWSLETTER -->
-<section class="sec" style="padding-top:20px">
-  <div class="wrap">
-    <div class="news reveal">
-      <div class="big-ten">10%</div>
-      <div style="position:relative">
-        <span class="eyebrow" style="color:var(--ink)">Club Pasión</span>
-        <h2 class="h2" style="margin-top:10px">10% OFF en tu <em>primera compra</em></h2>
-        <p>Sumate y enterate primero de lanzamientos, promos de temporada y regalos sorpresa.</p>
-      </div>
-      <div>
-        <form id="news-form"><input type="email" required placeholder="Tu email" aria-label="Tu email"><button class="btn btn-primary" type="submit">Quiero mi 10%</button></form>
-        <small>Sin spam. Podés darte de baja cuando quieras.</small>
-      </div>
-    </div>
-  </div>
-</section>
-
+<!-- PERSONAL SERVICE -->
+<section class="sec" style="padding-top:20px"><div class="wrap service-banner"><div><h2 class="h2">Detrás de cada pedido,<br>hay alguien que <em>te escucha.</em></h2><p>¿Una duda con el talle? ¿Un regalo especial? Estamos para ayudarte a elegir, con confianza y sin apuro.</p><a class="btn btn-ghost" href="/contacto">Conocé Pasión</a></div><img src="/assets/local.webp" alt="Local de Pasión Lencería" loading="lazy"></div></section>
+<!-- CLUB -->
+<section class="sec" style="padding-top:20px"><div class="wrap"><div class="news reveal"><div><span class="eyebrow">Club Pasión</span><h2 class="h2">Enterate primero de <em>lo nuevo.</em></h2><p>Nuevas colecciones, ideas para regalar y novedades de la tienda.</p></div><div><a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/59899251508?text=Hola%21%20Quiero%20recibir%20las%20novedades%20de%20Club%20Pasi%C3%B3n">Sumarme por WhatsApp</a><small>Nos escribís y coordinamos cómo recibir las novedades.</small></div></div></div></section>
 <!-- FAQ -->
 <section class="sec" style="padding-top:20px">
   <div class="wrap">
     <div class="sec-head reveal" style="justify-content:center;text-align:center"><div><span class="eyebrow">Preguntas frecuentes</span><h2 class="h2" style="margin-top:10px">Todo lo que <em>querés saber</em></h2></div></div>
     <div class="faq">
       <div class="q open"><button>¿El paquete dice lo que hay adentro?<span class="plus">+</span></button><div class="a"><div><p>No. Todos los pedidos salen en empaque neutro, sin marcas, logos ni referencias al contenido. El remitente también es reservado.</p></div></div></div>
-      <div class="q"><button>¿Cómo aparece la compra en mi tarjeta?<span class="plus">+</span></button><div class="a"><div><p>Aparece con un nombre genérico, sin la palabra “sex shop”. Podés pagar con tarjeta de crédito o débito, Mercado Pago o transferencia.</p></div></div></div>
-      <div class="q"><button>¿Cuánto demora el envío?<span class="plus">+</span></button><div class="a"><div><p>En Maldonado, Punta del Este y San Carlos te llega en el día si pedís antes de las 15 h. Al resto del país llega en 48 h por DAC. El envío es gratis desde $3.500.</p></div></div></div>
-      <div class="q"><button>¿Puedo cambiar el talle?<span class="plus">+</span></button><div class="a"><div><p>Sí. Las prendas de lencería y pijamas se pueden cambiar sin uso y con su etiqueta. Por higiene, los productos del sex shop no tienen cambio.</p></div></div></div>
-      <div class="q"><button>¿Puedo retirar en el local?<span class="plus">+</span></button><div class="a"><div><p>Claro. Elegí “retiro en el local” al pagar y te avisamos por WhatsApp cuando esté listo. Estamos en Constitución y Bahía Blanca, Maldonado.</p></div></div></div>
+      <div class="q"><button>¿Cómo puedo pagar mi pedido?<span class="plus">+</span></button><div class="a"><div><p>La forma de pago se coordina con Pasión por WhatsApp al confirmar el pedido. Esta web no solicita datos de tarjeta ni realiza cobros.</p></div></div></div>
+      <div class="q"><button>¿Cuánto demora el envío?<span class="plus">+</span></button><div class="a"><div><p>Enviamos por DAC a todo Uruguay. El plazo de referencia es de 48 h desde la confirmación del pago y puede variar según la localidad. Envío gratis desde $3.500; para entrega local, consultanos al confirmar el pedido.</p></div></div></div>
+      <div class="q"><button>¿Puedo cambiar el talle?<span class="plus">+</span></button><div class="a"><div><p>Sí. Tenés 7 días para solicitar el cambio de pijamas, batas, bikinis o sutienes sin uso, con etiqueta y empaque original. Por higiene, la lencería y los artículos íntimos no tienen cambio. Consultá las condiciones en nuestra página de cambios.</p></div></div></div>
+      <div class="q"><button>¿Puedo retirar en el local?<span class="plus">+</span></button><div class="a"><div><p>Claro. Elegí “retiro en el local” al preparar tu pedido y te avisamos por WhatsApp cuando esté listo. Estamos en Constitución y Bahía Blanca, Maldonado.</p></div></div></div>
     </div>
   </div>
 </section>
@@ -753,36 +292,24 @@ footer{background:var(--ink);color:rgba(251,244,246,.75);padding:80px 0 30px;mar
         <img class="flogo" src="/assets/logo.png" alt="Pasión Lencería">
         <p>Tienda de lencería y sex shop en Maldonado. Envíos discretos a todo Uruguay.</p>
         <div class="socials">
-          <a href="https://www.pasionuy.com" aria-label="Visitar tienda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
-          <a href="https://www.pasionuy.com/pages/contact" aria-label="Contacto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.5 2.8 2.4 4.5 5 4.8"/></svg></a>
+          <a href="/favoritos" aria-label="Mis favoritos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
+          <a href="/contacto" aria-label="Contacto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.5 2.8 2.4 4.5 5 4.8"/></svg></a>
           <a href="https://wa.me/59899251508" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12a8.5 8.5 0 0 1-12.5 7.5L3 21l1.5-5.5A8.5 8.5 0 1 1 21 12Z"/></svg></a>
         </div>
       </div>
-      <div><h5>Tienda</h5><a href="#productos">Lencería</a><a href="#productos">Pijamas</a><a href="#temporada">Bikinis</a><a href="#kits">Kits de regalo</a><a href="#sexshop">Sex Shop +18</a></div>
-      <div><h5>Ayuda</h5><a href="https://www.pasionuy.com/pages/guia-de-talles">Guía de talles</a><a href="https://www.pasionuy.com/pages/envios">Envíos y entregas</a><a href="https://www.pasionuy.com/pages/cambios">Cambios</a><a href="https://www.pasionuy.com/pages/privacidad">Privacidad</a><a href="#local">Nuestro local</a></div>
-      <div><h5>Contacto</h5><a href="https://wa.me/59899251508" target="_blank" rel="noopener">WhatsApp 099 251 508</a><a href="mailto:pasionlenceriauy@gmail.com">pasionlenceriauy@gmail.com</a><a href="#local">Constitución y Bahía Blanca, Maldonado</a>
+      <div><h5>Tienda</h5><a href="/colecciones/lenceria">Lencería</a><a href="/colecciones/pijamas">Pijamas</a><a href="/colecciones/bikinis">Bikinis</a><a href="/regalos">Kits de regalo</a><a href="/sex-shop">Sex Shop +18</a></div>
+      <div><h5>Ayuda</h5><a href="/guia-de-talles">Guía de talles</a><a href="/envios">Envíos y entregas</a><a href="/cambios">Cambios</a><a href="/privacidad">Privacidad</a><a href="/contacto">Nuestro local</a></div>
+      <div><h5>Contacto</h5><a href="https://wa.me/59899251508" target="_blank" rel="noopener">WhatsApp 099 251 508</a><a href="mailto:pasionlenceriauy@outlook.com">pasionlenceriauy@outlook.com</a><a href="/contacto">Constitución y Bahía Blanca, Maldonado</a>
         <h5 style="margin-top:22px">Medios de pago</h5>
         <div class="pays"><span>VISA</span><span>Mastercard</span><span>OCA</span><span>Mercado Pago</span><span>Transferencia</span></div>
       </div>
     </div>
-    <div class="foot-bottom"><span>© 2026 Pasión Lencería · Maldonado, Uruguay</span><span>Venta de productos +18 solo a mayores de edad</span></div>
+    <div class="foot-bottom"><span>© 2026 Pasión Lencería · Maldonado, Uruguay</span><span>Solo mayores de 18 años · <button id="theme-toggle" class="text-button">Cambiar apariencia</button></span></div>
   </div>
 </footer>
 
-<!-- CART -->
-<div class="overlay" id="overlay"></div>
-<aside class="drawer" id="drawer" aria-label="Carrito">
-  <div class="dr-head"><h3>Tu carrito</h3><button class="icon-btn" id="cart-close" aria-label="Cerrar carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
-  <div class="ship" id="ship"></div>
-  <div class="dr-items" id="dr-items"></div>
-  <div class="dr-foot">
-    <div class="dr-total"><span>Total</span><b id="dr-total">$0</b></div>
-    <div class="dr-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Pago seguro · cargo discreto en tu tarjeta</div>
-    <a class="btn btn-primary" id="checkout" href="#" target="_blank" rel="noopener">Finalizar por WhatsApp</a>
-    <a class="btn btn-ghost" id="wa-order" href="#" target="_blank" rel="noopener">Pedir por WhatsApp</a>
-  </div>
-</aside>
-
+<!-- DIALOGS -->
+<div id="dialogs"></div>
 <div class="wa">
   <div class="wa-bubble" id="wa-bubble"><strong>Pasión Lencería</strong>¡Hola! ¿Te ayudo a elegir tu talle o un regalo? 💕</div>
   <a class="wa-btn" href="https://wa.me/59899251508?text=Hola!%20Quiero%20ayuda%20para%20elegir" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
@@ -790,134 +317,9 @@ footer{background:var(--ink);color:rgba(251,244,246,.75);padding:80px 0 30px;mar
   </a>
 </div>
 
-<div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-10"/></svg><span id="toast-t">Agregado al carrito</span></div>
+<div class="toast" id="toast" role="status" aria-live="polite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-10"/></svg><span id="toast-t">Agregado al carrito</span></div>
 <div class="demo-badge"><i></i>Propuesta de rediseño por <b>ENTRAN</b></div>
 
-<script>
-const IMG = {"afrodita": "/assets/afrodita.webp", "brillos": "/assets/brillos.webp", "clara": "/assets/clara.webp", "evelyn": "/assets/evelyn.webp", "katherine": "/assets/katherine.webp", "kora": "/assets/kora.webp", "kristal": "/assets/kristal.webp", "local": "/assets/local.webp", "malena": "/assets/malena.webp", "malla": "/assets/malla.webp", "margaret": "/assets/margaret.png", "moni": "/assets/moni.png", "monica": "/assets/monica.png", "seda": "/assets/seda.jpg", "sedaencaje": "/assets/sedaencaje.jpg", "plush": "/assets/plush.jpg", "raelua": "/assets/raelua.jpg"};
-const PRODUCTS = {
-  lenceria:[
-    {id:'afrodita',n:'Baby Doll Afrodita',p:1281,b:'Nuevo'},
-    {id:'malena',n:'Conjunto Malena',p:990,b:'Más vendido',hot:1},
-    {id:'kristal',n:'Set Kristal',p:1490},
-    {id:'katherine',n:'Body Katherine con ligas',p:1299},
-    {id:'moni',n:'Baby Doll Moni',p:1499,b:'Destacado'},
-    {id:'kora',n:'Baby Doll Kora',p:799},
-    {id:'margaret',n:'Body Margaret',p:1090},
-    {id:'monica',n:'Bata Mónica',p:1208,b:'Más vendido',hot:1}
-  ],
-  pijamas:[
-    {id:'seda',n:'Pijama Símil Seda',p:599,b:'Más vendido',hot:1},
-    {id:'sedaencaje',n:'Pijama Símil Seda y Encaje',p:599},
-    {id:'clara',n:'Camisón Clara',p:990,b:'Nuevo'},
-    {id:'plush',n:'Pijama Plush Calentito',p:790}
-  ],
-  bikinis:[
-    {id:'evelyn',n:'Bikini Evelyn',p:599,b:'Temporada',hot:1},
-    {id:'malla',n:'Malla Enteriza con Volados',p:899},
-    {id:'brillos',n:'Bikini Brillos 2 piezas',p:499,b:'Nuevo'},
-    {id:'raelua',n:'Top Rae-Lua',p:499}
-  ]
-};
-const FREE = 3500;
-const fmt = n => '$' + n.toLocaleString('es-UY');
-const $ = s => document.querySelector(s);
-const cart = [];
-
-/* age gate */
-const gate = $('#gate');
-let ok = false; try { ok = sessionStorage.getItem('pasion18') === '1'; } catch(e){}
-if (ok) gate.classList.add('hide'); else document.body.style.overflow='hidden';
-$('#gate-yes').onclick = () => { gate.classList.add('hide'); document.body.style.overflow=''; try{sessionStorage.setItem('pasion18','1')}catch(e){} setTimeout(()=>$('#wa-bubble').classList.add('show'),3500); };
-$('#gate-no').onclick = () => { $('.gate-box').innerHTML = '<h2>¡Gracias por tu honestidad!</h2><p style="margin:0">Volvé cuando seas mayor de edad 💕</p>'; };
-if (ok) setTimeout(()=>$('#wa-bubble').classList.add('show'),3500);
-
-/* products */
-const heart = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg>';
-const bag = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>';
-function render(tab){
-  $('#grid').innerHTML = PRODUCTS[tab].map((x,i)=>`
-    <article class="card" style="animation-delay:${i*60}ms">
-      <div class="card-img">
-        <img src="${IMG[x.id]}" alt="${x.n}">
-        ${x.b?`<span class="badge ${x.hot?'hot':''}">${x.b}</span>`:''}
-        <button class="fav" aria-label="Guardar en favoritos">${heart}</button>
-        <button class="quick" data-add="${tab}:${x.id}" aria-label="Agregar ${x.n} al carrito">${bag}<span>Agregar al carrito</span></button>
-      </div>
-      <div class="card-body"><h4>${x.n}</h4><div class="price"><b>${fmt(x.p)}</b></div><div class="price-note">${x.p>=FREE?'Envío gratis':'Llega hoy en Maldonado'}</div></div>
-    </article>`).join('');
-}
-function setTab(tab){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
-  render(tab);
-}
-document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>setTab(t.dataset.tab));
-document.querySelectorAll('[data-tab]:not(.tab)').forEach(a=>a.addEventListener('click',()=>setTab(a.dataset.tab)));
-render('lenceria');
-
-document.addEventListener('click',e=>{
-  const f=e.target.closest('.fav'); if(f){f.classList.toggle('on');return;}
-  const a=e.target.closest('[data-add]');
-  if(a){const [tab,id]=a.dataset.add.split(':');const x=PRODUCTS[tab].find(p=>p.id===id);add({id:x.id,n:x.n,p:x.p,img:x.id});return;}
-  const k=e.target.closest('[data-kit]');
-  if(k){add({id:k.dataset.kit,n:k.dataset.kit,p:+k.dataset.price,img:k.dataset.img});}
-});
-
-/* cart */
-function add(item){
-  const ex=cart.find(c=>c.id===item.id);
-  ex?ex.q++:cart.push({...item,q:1});
-  update(); toast(item.n+' agregado');
-  const c=$('#cart-count'); c.style.transform='scale(1.4)'; setTimeout(()=>c.style.transform='',250);
-}
-function update(){
-  const count=cart.reduce((s,c)=>s+c.q,0), total=cart.reduce((s,c)=>s+c.q*c.p,0);
-  const cc=$('#cart-count'); cc.textContent=count; cc.classList.toggle('show',count>0);
-  $('#dr-total').textContent=fmt(total);
-  const left=FREE-total;
-  $('#ship').innerHTML = (left>0
-    ? `Te faltan <b>${fmt(left)}</b> para tener <b>envío gratis</b> 🚚`
-    : `¡Listo! Tenés <b>envío gratis</b> 🎉`) + `<div class="bar"><i style="width:${Math.min(100,total/FREE*100)}%"></i></div>`;
-  $('#dr-items').innerHTML = cart.length ? cart.map((c,i)=>`
-    <div class="dr-item"><img src="${IMG[c.img]}" alt="">
-      <div><h5>${c.n}</h5><div class="qty"><button data-q="${i}:-1" aria-label="Quitar uno">−</button><span>${c.q}</span><button data-q="${i}:1" aria-label="Sumar uno">+</button></div></div>
-      <div class="p">${fmt(c.p*c.q)}</div></div>`).join('')
-    : `<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Tu carrito está vacío.<br>¡Descubrí nuestros favoritos!</div>`;
-  const msg = 'Hola! Quiero hacer este pedido:%0A' + cart.map(c=>`• ${c.q} x ${encodeURIComponent(c.n)} (${fmt(c.p*c.q)})`).join('%0A') + `%0ATotal: ${fmt(total)}`;
-  $('#wa-order').href='https://wa.me/59899251508?text='+msg;
-  $('#checkout').href=$('#wa-order').href;
-}
-$('#dr-items').addEventListener('click',e=>{
-  const b=e.target.closest('[data-q]'); if(!b) return;
-  const [i,d]=b.dataset.q.split(':').map(Number);
-  cart[i].q+=d; if(cart[i].q<=0) cart.splice(i,1); update();
-});
-const openCart=()=>{$('#drawer').classList.add('show');$('#overlay').classList.add('show')};
-const closeCart=()=>{$('#drawer').classList.remove('show');$('#overlay').classList.remove('show')};
-$('#cart-open').onclick=openCart; $('#cart-close').onclick=closeCart; $('#overlay').onclick=closeCart;
-update();
-
-let tt; function toast(t){ $('#toast-t').textContent=t; $('#toast').classList.add('show'); clearTimeout(tt); tt=setTimeout(()=>$('#toast').classList.remove('show'),2200); }
-
-/* menu */
-$('#burger').onclick=()=>$('#mmenu').classList.add('show');
-$('#mclose').onclick=()=>$('#mmenu').classList.remove('show');
-document.querySelectorAll('#mmenu nav a').forEach(a=>a.addEventListener('click',()=>$('#mmenu').classList.remove('show')));
-
-/* faq */
-document.querySelectorAll('.q button').forEach(b=>b.onclick=()=>b.parentElement.classList.toggle('open'));
-
-/* newsletter */
-$('#news-form').onsubmit=e=>{e.preventDefault();e.target.innerHTML='<div style="padding:14px 20px;font-weight:500">¡Listo! Tu código es <b style="color:var(--rose)">PASION10</b> 💕</div>';};
-
-/* open now */
-(function(){const d=new Date(),h=d.getHours(),day=d.getDay(),open=day>=1&&day<=6&&h>=10&&h<20;
- const el=$('#open-now'); if(!open){el.textContent='Cerrado ahora · abrimos a las 10 h';el.previousElementSibling.style.background='#e8a23a';el.previousElementSibling.style.boxShadow='0 0 0 4px rgba(232,162,58,.2)';}})();
-
-/* header + reveal */
-addEventListener('scroll',()=>$('#hdr').classList.toggle('scrolled',scrollY>10),{passive:true});
-const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-</script>
+<script type="module" src="/app.js"></script>
 </body>
 </html>
