@@ -178,7 +178,6 @@ function common(){
  const social=$$('.socials a');if(social[0])social[0].innerHTML=HEART;if(social[1])social[1].innerHTML=$('.nav-icons a[aria-label="Nuestro local"] svg').outerHTML;
  const nav=$('.nav-links');nav.insertAdjacentHTML('afterbegin','<a href="/catalogo">Catálogo</a>');
  $$('.nav-links a, #mmenu nav a').forEach(a=>{if(a.getAttribute('href')===location.pathname)a.setAttribute('aria-current','page')});
- $('#theme-toggle').onclick=()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';try{localStorage.setItem('pasion-theme',dark?'dark':'light')}catch{}};
  document.addEventListener('click',e=>{const close=e.target.closest('[data-close-dialog]');if(close){closeDialog(close.closest('dialog'));return}const fav=e.target.closest('[data-favorite]');if(fav){toggleFavorite(fav.dataset.favorite);return}const qty=e.target.closest('[data-cart-change]');if(qty){const [id,d]=qty.dataset.cartChange.split(':');const item=cart.find(x=>x.id===id);if(item){item.q+=+d;if(item.q<1)cart=cart.filter(x=>x.id!==id);saveCart()}return}const remove=e.target.closest('[data-cart-remove]');if(remove){cart=cart.filter(x=>x.id!==remove.dataset.cartRemove);saveCart()}});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'){if($('#mmenu.show'))closeMenu();if($('#filters.is-open'))closeFilters()}if(e.key==='Tab'){const trap=$('#mmenu.show')||$('#filters.is-open')||$('#gate:not(.hide)');if(!trap)return;const focusables=$$('a[href],button:not(:disabled),input:not(:disabled),select,textarea,summary',trap).filter(x=>x.offsetParent!==null),first=focusables[0],last=focusables.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus()}}});
 }
@@ -196,4 +195,3 @@ async function boot(){
  }catch(error){console.error(error);$('#main').innerHTML='<div class="wrap loading-state"><div class="empty-state"><h2>No pudimos cargar la tienda.</h2><p>Revisá tu conexión e intentá nuevamente.</p><button class="btn btn-primary" onclick="location.reload()">Volver a intentar</button></div></div>';$('#search-open').disabled=true;$('#cart-open').disabled=true}
 }
 boot();
-

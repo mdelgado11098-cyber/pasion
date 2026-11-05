@@ -6,7 +6,7 @@ Tienda estática de presentación, desplegada en https://pasion-lenceria.vercel.
 
 - Catálogo local de 314 productos, con categorías, subcategorías, búsqueda, precio, talle, disponibilidad, orden y paginación.
 - Fichas con variantes, precio por variante, galería y productos relacionados.
-- Carrito y favoritos persistidos en el navegador; modo claro y oscuro.
+- Carrito y favoritos persistidos en el navegador; diseño claro original.
 - Pedido con envío o retiro, resumen y mensaje preparado para WhatsApp. No procesa cobros ni confirma pedidos automáticamente.
 - Páginas locales de regalos, contacto, envíos, cambios, privacidad y guías.
 
